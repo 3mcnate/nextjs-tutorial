@@ -11,6 +11,8 @@ import {
 } from '@/app/ui/skeletons';
 import CardWrapper from '@/app/ui/dashboard/cards';
 
+export const dynamic = 'force-dynamic';
+
 export default async function Page() {
 	return (
 		<main>
