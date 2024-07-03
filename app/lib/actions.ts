@@ -48,8 +48,6 @@ export async function createInvoice(prevState: State, formData: FormData) {
 	// safe parse to handle errors gracefully
 	const validatedFields = CreateInvoice.safeParse(rawFormData);
 
-	console.log('validatedFields', validatedFields);
-
 	// if form validation fails, return early
 	if (!validatedFields.success) {
 		return {
@@ -76,6 +74,7 @@ export async function createInvoice(prevState: State, formData: FormData) {
 		};
 	}
 	revalidatePath('/dashboard/invoices');
+	revalidatePath('/dashboard');
 	redirect('/dashboard/invoices');
 }
 

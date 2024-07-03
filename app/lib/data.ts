@@ -15,7 +15,6 @@ export async function fetchRevenue() {
 		// Don't do this in production :)
 
 		console.log('Fetching revenue data...');
-		await new Promise((resolve) => setTimeout(resolve, 3000));
 
 		const data = await sql<Revenue>`SELECT * FROM revenue`;
 
@@ -29,8 +28,6 @@ export async function fetchRevenue() {
 }
 
 export async function fetchLatestInvoices() {
-	await new Promise((resolve) => setTimeout(resolve, 1000));
-
 	try {
 		const data = await sql<LatestInvoiceRaw>`
       SELECT invoices.amount, customers.name, customers.image_url, customers.email, invoices.id
@@ -160,7 +157,6 @@ export async function fetchInvoiceById(id: string) {
 			amount: invoice.amount / 100,
 		}));
 
-		console.log(invoice);
 		return invoice[0];
 	} catch (error) {
 		console.error('Database Error:', error);
